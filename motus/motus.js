@@ -31,6 +31,8 @@ function tryWord(input) {
 
 // Test
 
+// Test 2
+
  console.log("Git");
  
 function verifyWordLength(wordToVerify) {
