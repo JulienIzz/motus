@@ -29,6 +29,8 @@ function tryWord(input) {
     }
 }
 
+ console.log("Git");
+ 
 function verifyWordLength(wordToVerify) {
     if (wordToVerify.length != gameWord.length) {
         return("Votre mot doit faire " + gameWord.length + " lettres.");
