@@ -28,12 +28,6 @@ function tryWord(input) {
         gameEnd();
     }
 }
-
-// Test
-// Test3
-// Test 2
-
- console.log("Git");
  
 function verifyWordLength(wordToVerify) {
     if (wordToVerify.length != gameWord.length) {
