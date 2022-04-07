@@ -29,6 +29,8 @@ function tryWord(input) {
     }
 }
 
+// Test
+
  console.log("Git");
  
 function verifyWordLength(wordToVerify) {
