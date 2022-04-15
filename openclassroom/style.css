@@ -1,4 +1,31 @@
-p
+h1
 {
-    color: rgb(0, 129, 180);
+    color: black;
+    font-style: normal;
+    font-weight: bolder;
+    font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
+
+*
+{
+    color: black;
+    font-style: normal;
+    font-weight: bold;
+    font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+@font-face {
+    font-family: '3dumbregular';
+    src: url('font/3Dumb-webfont.eot');
+    src: url('font/3Dumb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/3Dumb-webfont.woff2') format('woff2'),
+         url('font/3Dumb-webfont.woff') format('woff'),
+         url('font/3Dumb-webfont.ttf') format('truetype'),
+         url('font/3Dumb-webfont.svg#3dumbregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
