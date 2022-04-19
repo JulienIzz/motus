@@ -4,6 +4,11 @@ h1
     font-style: normal;
     font-weight: bolder;
     font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.side
+{
     
 }
 
@@ -15,6 +20,13 @@ h1
     font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
 }
+
+/* .imgflot
+{
+    float: left;
+}
+
+*/
 
 @font-face {
     font-family: '3dumbregular';
