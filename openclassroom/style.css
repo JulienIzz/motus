@@ -3,7 +3,7 @@ h1
     color: whitesmoke;
     font-style: normal;
     font-size: 3em;
-    font-weight: bolder;
+    font-weight: bold;
     font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     border-radius: 1em;
@@ -16,14 +16,16 @@ h1
     margin: auto;
 }
 
-.side
+.cv
 {
-    float: right;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 *
 {
     color: whitesmoke;
+    font-size: 1.1em;
     font-style: normal;
     font-weight: normal;
     font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
