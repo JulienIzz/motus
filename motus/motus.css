@@ -39,7 +39,7 @@ header {
   justify-content: space-evenly;
 }
 
-.navbar li{
+.navbar > li{
   display: inline;
   padding-inline: 0.8em;
   font-family: '3dumbregular','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -50,9 +50,14 @@ header {
   margin: 2em;
 }
 
-.navbar li:hover{
+.navbar > li {
+  margin: 50px;
+}
+
+.navbar > li:hover{
   font-weight:bolder;
   box-shadow: 3px 3px 3px white;
+  border-width: thick;
 }
 
 a {
