@@ -119,3 +119,11 @@ a {
 .oknotplaced {
   background-color: #f5d400;
 }
+
+.buttonSite {
+  display: flex;
+  margin:auto;
+  margin-top: 30px;
+  width: 250px;
+  height: 50px;
+}
