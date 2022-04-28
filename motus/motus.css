@@ -127,3 +127,7 @@ a {
   width: 250px;
   height: 50px;
 }
+
+#rules {
+  justify-content: center;
+}
