@@ -2,7 +2,6 @@
   font-family: '3dumbregular';
   src: url('font/3Dumb-webfont.eot');
   src: url('font/3Dumb-webfont.eot?#iefix') format('embedded-opentype'),
-      url('font/3Dumb-webfont.woff2') format('woff2'),
       url('font/3Dumb-webfont.woff') format('woff'),
       url('font/3Dumb-webfont.ttf') format('truetype'),
       url('font/3Dumb-webfont.svg#3dumbregular') format('svg');
@@ -126,8 +125,23 @@ a {
   margin-top: 30px;
   width: 250px;
   height: 50px;
+  background-color: rgb(88, 88, 88);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+button {
+  cursor: pointer;
 }
 
 #rules {
   justify-content: center;
+}
+
+#tableau, #wordInput, #inputButton {
+  display:none
 }

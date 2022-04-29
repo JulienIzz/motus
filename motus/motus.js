@@ -11,20 +11,14 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-console.log(getRandomInt(5));
-
 function generateWord() {
     return dico[getRandomInt(dico.length)];
 }
-
-generateWord();
 
 function startGame() {
     playerTryNumber = 0;
     gameWord = generateWord();
 }
-
-startGame();
 
 function tryWord(input) {
     if (playerTryNumber < numberOfTry) {
@@ -69,18 +63,23 @@ function createHintWordForDisplay(wordToVerify) {
     console.log(hintWord);
 }
 
-
-tryWord("banana");
-console.log(playerTryNumber);
-
-
-// Idée pour quand il y aura une lettre qui apparait 2 fois dans le mot à tester, et une fois dans le mot référence :
-// On fait un mot "tampon" du mot référence, duquel on pop-off chaque lettre comparée
-// Attention ça va emêcher le includes() => A méditer
-
 function gameEnd() {
     gameWord = undefined;
     playerTryNumber = undefined;
 }
 
-console.log("Bonjour la famille");
+let nbrappuijs = 0;
+
+document
+    .getElementById("tryWordButton")
+    .addEventListener("click", function() {
+    document
+      .getElementById("nbrappui")
+      .innerText = (++nbrappuijs) + '';
+  });
+
+  document
+    .getElementById("startGameButton")
+    .addEventListener("click", function() {
+    // A REMPLIR POUR LANCER LES FONCTIONS DE GENERATION DE MOT, VIRER LE BOUTON, ET AFFICHER LE NOMBRE D'ESSAIS RESTANTS + TOUTE LA GRILLES ETC
+  });
