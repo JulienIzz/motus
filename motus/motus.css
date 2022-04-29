@@ -64,7 +64,7 @@ a {
 }
 #tableau {
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 20px;
   width: fit-content;
   margin-inline: auto;
 }
@@ -139,10 +139,6 @@ button {
   justify-content: center;
 }
 
-.visible {
-
-}
-
 .hidden {
   display: none;
 }
@@ -152,3 +148,11 @@ button {
   justify-content: center;
 }
 
+.numberOfTryDiv {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  color: white;
+}

@@ -70,21 +70,15 @@ function gameEnd() {
 
 let nbrappuijs = 0;
 
-document
-    .getElementById("tryWordButton")
-    .addEventListener("click", function() {
-    document
-      .getElementById("nbrappui")
-      .innerText = (++nbrappuijs) + '';
-  });
-
   document
     .getElementById("startGameButton")
     .addEventListener("click", function() {
         // A REMPLIR POUR LANCER LES FONCTIONS DE GENERATION DE MOT, VIRER LE BOUTON, ET AFFICHER LE NOMBRE D'ESSAIS RESTANTS + TOUTE LA GRILLES ETC
-        document.getElementById("tableau").classList.replace("hidden", "visible");
-        document.getElementById("startButton").classList.replace("visible", "hidden");
-        document.getElementById("wordInput").classList.replace("hidden", "visible");
+        document.getElementById("tableau").classList.remove("hidden");
+        document.getElementById("startButton").classList.add("hidden");
+        document.getElementById("wordInput").classList.remove("hidden");
+        document.getElementById("numberOfTryDiv").classList.remove("hidden");
         document.getElementById("wordInput").classList.add("wordInput");
-        document.getElementById("inputButton").classList.replace("hidden", "visible");
+        document.getElementById("numberOfTryDiv").classList.add("numberOfTryDiv");
+        document.getElementById("inputButton").classList.remove("hidden");
   });
