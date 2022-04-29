@@ -139,11 +139,11 @@ button {
   justify-content: center;
 }
 
-.gameStarted {
+.visible {
 
 }
 
-.gameNotStarted {
+.hidden {
   display: none;
 }
 

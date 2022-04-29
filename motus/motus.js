@@ -82,9 +82,9 @@ document
     .getElementById("startGameButton")
     .addEventListener("click", function() {
         // A REMPLIR POUR LANCER LES FONCTIONS DE GENERATION DE MOT, VIRER LE BOUTON, ET AFFICHER LE NOMBRE D'ESSAIS RESTANTS + TOUTE LA GRILLES ETC
-        document.getElementById("tableau").classList.replace("gameNotStarted", "gameStarted");
-        document.getElementById("startButton").classList.replace("gameStarted", "gameNotStarted");
-        document.getElementById("wordInput").classList.replace("gameNotStarted", "gameStarted");
+        document.getElementById("tableau").classList.replace("hidden", "visible");
+        document.getElementById("startButton").classList.replace("visible", "hidden");
+        document.getElementById("wordInput").classList.replace("hidden", "visible");
         document.getElementById("wordInput").classList.add("wordInput");
-        document.getElementById("inputButton").classList.replace("gameNotStarted", "gameStarted");
+        document.getElementById("inputButton").classList.replace("hidden", "visible");
   });
