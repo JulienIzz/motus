@@ -90,10 +90,7 @@ a {
   text-transform: uppercase;
 }
 
-#wordInput {
-  display: flex;
-  justify-content: center;
-}
+
 
 #word {
   width: 9em;
@@ -142,6 +139,16 @@ button {
   justify-content: center;
 }
 
-#tableau, #wordInput, #inputButton {
-  display:none
+.gameStarted {
+
 }
+
+.gameNotStarted {
+  display: none;
+}
+
+.wordInput {
+  display: flex;
+  justify-content: center;
+}
+
