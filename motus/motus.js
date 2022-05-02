@@ -113,3 +113,8 @@ document
         tryWord(input);
         if (short != true) {displayHintWord(hintWord);} // a déplacer dans la suite de fct tryWord ensuite
     });
+
+
+// A revoir : Les fonctions de fin de game quand on gagne, et quand on a plus d'essais.
+// A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
+// Et quand on perd, afficher le mot qui était à deviner
