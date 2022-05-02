@@ -31,21 +31,23 @@ function tryWord(input) {
  
 function verifyWordLength(wordToVerify) {
     if (wordToVerify.length != gameWord.length) {
-        return("Votre mot doit faire " + gameWord.length + " lettres.");
+        alert("Votre mot doit faire " + gameWord.length + " lettres.");
     }
     verifyWord(wordToVerify);
 }
 
 function verifyWord(wordToVerify) {
     playerTryNumber++;
+    document.getElementById("numberOfTry").innerText = numberOfTry - playerTryNumber;
+    alert(playerTryNumber);
     if (wordToVerify == gameWord) {
         gameEnd();
-        console.log("You won !");
+        alert("You won !");
     } else if (wordToVerify != gameWord && gameWord != undefined) {
         createHintWordForDisplay(wordToVerify);
         return hintWord;
     } else {
-        console.log("No game started");
+        alert("No game started");
     }
 }
 
@@ -60,7 +62,7 @@ function createHintWordForDisplay(wordToVerify) {
             hintWord += "-";
         }
     }
-    console.log(hintWord);
+    alert(hintWord);
 }
 
 function gameEnd() {
@@ -68,7 +70,7 @@ function gameEnd() {
     playerTryNumber = undefined;
 }
 
-  document
+document
     .getElementById("startGameButton")
     .addEventListener("click", function() {
         // A REMPLIR POUR LANCER LES FONCTIONS DE GENERATION DE MOT, VIRER LE BOUTON, ET AFFICHER LE NOMBRE D'ESSAIS RESTANTS + TOUTE LA GRILLES ETC
@@ -81,12 +83,12 @@ function gameEnd() {
         document.getElementById("numberOfTryDiv").classList.add("numberOfTryDiv");
         startGame();
         alert(gameWord);
-  });
+    });
 
-  document
-  .getElementById("tryWordButton")
-  .addEventListener("click", function() {
+document
+    .getElementById("tryWordButton")
+    .addEventListener("click", function() {
         input = document.getElementById("word").value
         alert(input)
-
-});
+        tryWord(input);
+    });
