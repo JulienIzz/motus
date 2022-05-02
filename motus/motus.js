@@ -131,3 +131,5 @@ document
 
 // A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
 // Ajouter l'écoute d'entrée
+// Ajouter les lettres déjà trouvées dans la grille
+// Ajouter à chaque fois la première lettre du mot
