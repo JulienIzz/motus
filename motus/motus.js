@@ -24,7 +24,7 @@ function tryWord(input) {
     if (playerTryNumber < numberOfTry) {
         verifyWordLength(input);
     } else {
-        console.log("Vous n'avez plus d'essai !");
+        alert("Vous n'avez plus d'essai !");
         gameEnd();
     }
 }
@@ -68,17 +68,25 @@ function gameEnd() {
     playerTryNumber = undefined;
 }
 
-let nbrappuijs = 0;
-
   document
     .getElementById("startGameButton")
     .addEventListener("click", function() {
         // A REMPLIR POUR LANCER LES FONCTIONS DE GENERATION DE MOT, VIRER LE BOUTON, ET AFFICHER LE NOMBRE D'ESSAIS RESTANTS + TOUTE LA GRILLES ETC
-        document.getElementById("tableau").classList.remove("hidden");
         document.getElementById("startButton").classList.add("hidden");
+        document.getElementById("tableau").classList.remove("hidden");
         document.getElementById("wordInput").classList.remove("hidden");
         document.getElementById("numberOfTryDiv").classList.remove("hidden");
+        document.getElementById("inputButton").classList.remove("hidden");
         document.getElementById("wordInput").classList.add("wordInput");
         document.getElementById("numberOfTryDiv").classList.add("numberOfTryDiv");
-        document.getElementById("inputButton").classList.remove("hidden");
+        startGame();
+        alert(gameWord);
   });
+
+  document
+  .getElementById("tryWordButton")
+  .addEventListener("click", function() {
+        input = document.getElementById("word").value
+        alert(input)
+
+});
