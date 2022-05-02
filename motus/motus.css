@@ -74,10 +74,11 @@ a {
   justify-content: center;
 }
 
-.ligne > div {
+.ligne > * {
   display: flex;
   border-style: solid;
   border-color: white;
+  background-color: rgb(89, 89, 89);
   width: 1.5em;
   height: 1.5em;
   justify-content: center;
