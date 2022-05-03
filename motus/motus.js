@@ -101,7 +101,7 @@ function fillBoxes(rowToDisplay, wordToVerify) {
             document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
         }
     }
-    alert(displayWord);
+    
     // Checking if all the letters have been found, if yes, triggers the win and write the word with red boxes
     // If no, shows the letter found without color
     if (displayWord === gameWord && wordToVerify != gameWord) {
