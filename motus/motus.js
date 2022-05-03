@@ -104,10 +104,10 @@ document
     .getElementById("startGameButton")
     .addEventListener("click", function() {
         startGame();
-    });
+});
 
 
-// Triggers all the necessary functions to try a word
+// Triggers all the necessary functions to try a word by clicking the button
 document
     .getElementById("tryWordButton")
     .addEventListener("click", function() {
@@ -116,7 +116,21 @@ document
         document.getElementById("word").value = ""; // Clear textarea after playing
         document.getElementById("word").focus(); // Select textarea after playing
         document.getElementById("word").select(); // Select textarea after playing
-    });
+});
+
+// Triggers all the necessary functions to try a word by pressing enter anywhere on the page
+document
+    .getElementById("body")
+    .addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        input = document.getElementById("word").value.toUpperCase(); // Get the input frome textarea
+        tryWord(input); // Launch the functions to verify the word, and trigger the win, the loss, or the display of the word in the grid
+        document.getElementById("word").value = ""; // Clear textarea after playing
+        document.getElementById("word").focus(); // Select textarea after playing
+        document.getElementById("word").select(); // Select textarea after playing
+    }
+});
 
 
 // Allows to restart the game by reloading the page
