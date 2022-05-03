@@ -72,7 +72,7 @@ function verifyWord(wordToVerify) {
 }
 
 
-function triggerWin(wordToVerify) {
+function triggerWin() {
     document.getElementById("numberOfTryText").innerText = "Vous avez gagné !";
     gameEnd();
 }
@@ -101,17 +101,17 @@ function fillBoxes(rowToDisplay, wordToVerify) {
             document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
         }
     }
-
+    alert(displayWord);
     // Checking if all the letters have been found, if yes, triggers the win and write the word with red boxes
     // If no, shows the letter found without color
-    if (displayWord.toUpperCase() === gameWord) {
+    if (displayWord === gameWord && wordToVerify != gameWord) {
         fillNextRow(displayWord);
         var rowToDisplayNext = "L" + (playerTryNumber + 1);
         for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
             document.getElementById(rowToDisplayNext + indexLetter).classList.add("ok");
         }
         triggerWin(displayWord)
-    } else {
+    } else if (playerTryNumber < 5 && wordToVerify != gameWord) {
         fillNextRow(displayWord);
     }
 }
