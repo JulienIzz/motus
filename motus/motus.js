@@ -74,16 +74,20 @@ function verifyWord(wordToVerify) {
 // Red : In the game word an well placed
 function displayHintWord (wordToVerify) {
     var rowToDisplay = "L" + playerTryNumber;
-    for (let indexLetter = 1 ; indexLetter < 7 ; indexLetter++) {
+    fillBoxes(rowToDisplay, wordToVerify);
+}
+
+function fillBoxes(rowToDisplay, wordToVerify) {
+    for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
         var boxToDisplay = rowToDisplay + indexLetter;
-        if (wordToVerify[indexLetter-1] == gameWord[indexLetter-1]) {
+        if (wordToVerify[indexLetter - 1] == gameWord[indexLetter - 1]) {
             document.getElementById(boxToDisplay).classList.add("ok");
-            document.getElementById(boxToDisplay).innerText = input[indexLetter-1];
-        } else if (gameWord.includes(wordToVerify[indexLetter-1])) {
+            document.getElementById(boxToDisplay).innerText = input[indexLetter - 1];
+        } else if (gameWord.includes(wordToVerify[indexLetter - 1])) {
             document.getElementById(boxToDisplay).classList.add("oknotplaced");
-            document.getElementById(boxToDisplay).innerText = input[indexLetter-1];
+            document.getElementById(boxToDisplay).innerText = input[indexLetter - 1];
         } else {
-            document.getElementById(boxToDisplay).innerText = input[indexLetter-1];
+            document.getElementById(boxToDisplay).innerText = input[indexLetter - 1];
         }
     }
 }
