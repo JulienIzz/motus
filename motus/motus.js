@@ -5,9 +5,14 @@ var gameWord;
 var playerTryNumber;
 var hintWord = "";
 var input;
+var displayWord = "------"
 var short = false;
 
 'use strict';
+
+String.prototype.replaceAt = function (i, char) {
+    return this.substring(0, i) + char + this.substring(i + char.length);
+}
 
 // Generates an int between 0 and max
 function getRandomInt(max) {
@@ -53,8 +58,7 @@ function verifyWord(wordToVerify) {
     document.getElementById("numberOfTry").innerText = numberOfTry - playerTryNumber;
     if (wordToVerify == gameWord) {
         displayHintWord(wordToVerify);
-        document.getElementById("numberOfTryText").innerText = "Vous avez gagné !";
-        gameEnd();
+        triggerWin(gameWord);
     } else if (wordToVerify != gameWord && playerTryNumber == 5) {
         displayHintWord(wordToVerify);
         document.getElementById("numberOfTryText").innerText = "Vous avez perdu ! Le mot à deviner était " + gameWord;
@@ -68,26 +72,56 @@ function verifyWord(wordToVerify) {
 }
 
 
+function triggerWin(wordToVerify) {
+    document.getElementById("numberOfTryText").innerText = "Vous avez gagné !";
+    gameEnd();
+}
+
 // Changes the color of the boxes to fit the letter place in the game word
 // No change : not in the game word
 // Yellow : in the game word but wrong place
 // Red : In the game word an well placed
 function displayHintWord (wordToVerify) {
-    var rowToDisplay = "L" + playerTryNumber;
+    var rowToDisplay = "L" + playerTryNumber; // Create the index for the row corresponding in HTML
     fillBoxes(rowToDisplay, wordToVerify);
 }
 
+// Function dedicated to filling the boxes with the letters and colors
 function fillBoxes(rowToDisplay, wordToVerify) {
     for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
-        var boxToDisplay = rowToDisplay + indexLetter;
+        var boxToDisplay = rowToDisplay + indexLetter; // Create the index for the box corresponding in HTML
         if (wordToVerify[indexLetter - 1] == gameWord[indexLetter - 1]) {
             document.getElementById(boxToDisplay).classList.add("ok");
-            document.getElementById(boxToDisplay).innerText = input[indexLetter - 1];
+            document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
+            displayWord = displayWord.replaceAt(indexLetter - 1, wordToVerify[indexLetter - 1]);
         } else if (gameWord.includes(wordToVerify[indexLetter - 1])) {
             document.getElementById(boxToDisplay).classList.add("oknotplaced");
-            document.getElementById(boxToDisplay).innerText = input[indexLetter - 1];
+            document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
         } else {
-            document.getElementById(boxToDisplay).innerText = input[indexLetter - 1];
+            document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
+        }
+    }
+
+    // Checking if all the letters have been found, if yes, triggers the win and write the word with red boxes
+    // If no, shows the letter found without color
+    if (displayWord.toUpperCase() === gameWord) {
+        fillNextRow(displayWord);
+        var rowToDisplayNext = "L" + (playerTryNumber + 1);
+        for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+            document.getElementById(rowToDisplayNext + indexLetter).classList.add("ok");
+        }
+        triggerWin(displayWord)
+    } else {
+        fillNextRow(displayWord);
+    }
+}
+
+// Function to write found letters in next row
+function fillNextRow(displayWord) {
+    for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+        if (displayWord[indexLetter-1] != "-") {
+            var rowToDisplayNext = "L" + (playerTryNumber + 1);
+            document.getElementById(rowToDisplayNext + indexLetter).innerText = displayWord[indexLetter - 1];
         }
     }
 }
@@ -148,6 +182,5 @@ document
 
 
 // A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
-// Ajouter l'écoute d'entrée
 // Ajouter les lettres déjà trouvées dans la grille
 // Ajouter à chaque fois la première lettre du mot
