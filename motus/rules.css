@@ -9,6 +9,7 @@
     background: rgb(0 0 0 / 20%);
     border: double;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-inline: 12px;
 }
 
 strong {

@@ -13,8 +13,13 @@
     font-style: normal;
 }
 
-* {
+body {
     background-color: grey;
+    margin: 0;
+}
+
+header {
+    background-color: #585858;
 }
 
 header {
