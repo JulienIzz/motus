@@ -191,3 +191,4 @@ document
 // Implanter la vérif de dictionnaire à l'input
 
 // Mes boutons ont changé de style ???
+// Regrouper certains trucs avec getElementsByClassName
