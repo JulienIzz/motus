@@ -130,6 +130,7 @@ function fillNextRow(displayWord) {
 function gameEnd() {
     gameWord = undefined;
     playerTryNumber = undefined;
+    displayWord = "------"
     document.getElementById("restartButton").classList.remove("hidden");
     document.getElementById("inputButton").classList.add("hidden");
     document.getElementById("wordInput").classList.remove("wordInput");
@@ -182,5 +183,11 @@ document
 
 
 // A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
-// Ajouter les lettres déjà trouvées dans la grille
-// Ajouter à chaque fois la première lettre du mot
+// Next steps : 
+// Clean le code
+// Ajouter la gestion de mots de longueur N
+// Animations et design
+// Connexion API pour le dico
+// Implanter la vérif de dictionnaire à l'input
+
+// Mes boutons ont changé de style ???
