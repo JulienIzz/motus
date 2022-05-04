@@ -10,6 +10,7 @@ var short = false;
 
 'use strict';
 
+// Function to modify a string without creating a new one
 String.prototype.replaceAt = function (i, char) {
     return this.substring(0, i) + char + this.substring(i + char.length);
 }
@@ -56,10 +57,10 @@ function tryWord(wordToVerify) {
 function verifyWord(wordToVerify) {
     playerTryNumber++;
     document.getElementById("numberOfTry").innerText = numberOfTry - playerTryNumber;
-    if (wordToVerify == gameWord) {
+    if (wordToVerify === gameWord) {
         displayHintWord(wordToVerify);
         triggerWin(gameWord);
-    } else if (wordToVerify != gameWord && playerTryNumber == 5) {
+    } else if (wordToVerify != gameWord && playerTryNumber === 5) {
         displayHintWord(wordToVerify);
         document.getElementById("numberOfTryText").innerText = "Vous avez perdu ! Le mot à deviner était " + gameWord;
         gameEnd();
@@ -90,7 +91,7 @@ function displayHintWord (wordToVerify) {
 function fillBoxes(rowToDisplay, wordToVerify) {
     for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
         var boxToDisplay = rowToDisplay + indexLetter; // Create the index for the box corresponding in HTML
-        if (wordToVerify[indexLetter - 1] == gameWord[indexLetter - 1]) {
+        if (wordToVerify[indexLetter - 1] === gameWord[indexLetter - 1]) {
             document.getElementById(boxToDisplay).classList.add("ok");
             document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
             displayWord = displayWord.replaceAt(indexLetter - 1, wordToVerify[indexLetter - 1]);
@@ -178,7 +179,6 @@ document
     .addEventListener("click", function() {
         location.reload();
         startGame();
-        //alert(gameWord); // Shows the secret word
     });
 
 
