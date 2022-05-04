@@ -1,14 +1,16 @@
-const numberOfTry = 5;
 const dicoRaw = ["julien","pardon","banane","patate"];
 const dico = dicoRaw.map(element => {return element.toUpperCase();});
-var gameWord;
-var playerTryNumber;
-var hintWord = "";
+const maxNumberOfTry = 5;
 var input;
-var displayWord = "------"
-var short = false;
+var wordToFind;
+var numberOfTry;
+var foundLetters = "------";
 
 'use strict';
+
+//
+// Game's logic
+//
 
 // Function to modify a string without creating a new one
 String.prototype.replaceAt = function (i, char) {
@@ -28,8 +30,8 @@ function generateWord() {
 // Generates a word for the game and sets the count of try to 0 
 // also showing grid and play components, hiding start game button
 function startGame() {
-    playerTryNumber = 0;
-    gameWord = generateWord();
+    numberOfTry = 0;
+    wordToFind = generateWord();
     document.getElementById("startButton").classList.add("hidden");
     document.getElementById("tableau").classList.remove("hidden");
     document.getElementById("wordInput").classList.remove("hidden");
@@ -43,8 +45,8 @@ function startGame() {
 
 // Verifies the length of the word tried and go on if it's 6 letters long
 function tryWord(wordToVerify) {
-    if (wordToVerify.length != gameWord.length) {
-        alert("Votre mot doit faire " + gameWord.length + " lettres.");
+    if (wordToVerify.length != wordToFind.length) {
+        alert("Votre mot doit faire " + wordToFind.length + " lettres.");
     } else {
     verifyWord(wordToVerify);
     }
@@ -55,23 +57,28 @@ function tryWord(wordToVerify) {
 // If not, display the hintword
 // If error, instructions to reload the page
 function verifyWord(wordToVerify) {
-    playerTryNumber++;
-    document.getElementById("numberOfTry").innerText = numberOfTry - playerTryNumber;
-    if (wordToVerify === gameWord) {
+    numberOfTry++;
+    document.getElementById("numberOfTry").innerText = maxNumberOfTry - numberOfTry;
+    if (wordToVerify === wordToFind) {
+        winByInput();
+    } else if (wordToVerify != wordToFind && numberOfTry === 5) {
         displayHintWord(wordToVerify);
-        triggerWin(gameWord);
-    } else if (wordToVerify != gameWord && playerTryNumber === 5) {
-        displayHintWord(wordToVerify);
-        document.getElementById("numberOfTryText").innerText = "Vous avez perdu ! Le mot à deviner était " + gameWord;
+        document.getElementById("numberOfTryText").innerText = "Vous avez perdu ! Le mot à deviner était " + wordToFind;
         gameEnd();
-    } else if (wordToVerify != gameWord && gameWord != undefined) {
+    } else if (wordToVerify != wordToFind) {
         displayHintWord(wordToVerify);
-    } else {
-        alert("Error, reload the page");
-        gameEnd();
     }
 }
 
+function winByInput() {
+    var rowToDisplay = "L" + numberOfTry;
+    for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+        var boxToDisplay = rowToDisplay + indexLetter; // Create the index for the box corresponding in HTML
+        document.getElementById(boxToDisplay).classList.add("ok");
+        document.getElementById(boxToDisplay).innerText = wordToFind[indexLetter - 1];
+    }
+    triggerWin();
+}
 
 function triggerWin() {
     document.getElementById("numberOfTryText").innerText = "Vous avez gagné !";
@@ -83,61 +90,70 @@ function triggerWin() {
 // Yellow : in the game word but wrong place
 // Red : In the game word an well placed
 function displayHintWord (wordToVerify) {
-    var rowToDisplay = "L" + playerTryNumber; // Create the index for the row corresponding in HTML
-    fillBoxes(rowToDisplay, wordToVerify);
+    var rowToDisplay = "L" + numberOfTry; // Create the index for the row corresponding in HTML
+    fillBoxes(wordToVerify, rowToDisplay);
 }
 
 // Function dedicated to filling the boxes with the letters and colors
-function fillBoxes(rowToDisplay, wordToVerify) {
+function fillBoxes(wordToVerify, rowToDisplay) {
     for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
         var boxToDisplay = rowToDisplay + indexLetter; // Create the index for the box corresponding in HTML
-        if (wordToVerify[indexLetter - 1] === gameWord[indexLetter - 1]) {
+        if (wordToVerify[indexLetter - 1] === wordToFind[indexLetter - 1]) {
             document.getElementById(boxToDisplay).classList.add("ok");
             document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
-            displayWord = displayWord.replaceAt(indexLetter - 1, wordToVerify[indexLetter - 1]);
-        } else if (gameWord.includes(wordToVerify[indexLetter - 1])) {
+            foundLetters = foundLetters.replaceAt(indexLetter - 1, wordToVerify[indexLetter - 1]);
+        } else if (wordToFind.includes(wordToVerify[indexLetter - 1])) {
             document.getElementById(boxToDisplay).classList.add("oknotplaced");
             document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
         } else {
             document.getElementById(boxToDisplay).innerText = wordToVerify[indexLetter - 1];
         }
     }
-    
-    // Checking if all the letters have been found, if yes, triggers the win and write the word with red boxes
+    // Checking if all the letters have been found, if yes (and not last try), triggers the win and write the word with red boxes
     // If no, shows the letter found without color
-    if (displayWord === gameWord && wordToVerify != gameWord) {
-        fillNextRow(displayWord);
-        var rowToDisplayNext = "L" + (playerTryNumber + 1);
+    if (numberOfTry < 5) {
+        checkFoundLetters();
+    }
+}
+
+// Triggers if not last try to show the already found letters in the row to fill
+function checkFoundLetters() {
+    if (foundLetters === wordToFind) {
+        fillNextRow(foundLetters);
+        var rowToDisplayNext = "L" + (numberOfTry + 1);
         for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
-            document.getElementById(rowToDisplayNext + indexLetter).classList.add("ok");
+            document.getElementById(rowToDisplayNext + indexLetter).classList.add("ok"); // Fills the row in red for the win
         }
-        triggerWin(displayWord)
-    } else if (playerTryNumber < 5 && wordToVerify != gameWord) {
-        fillNextRow(displayWord);
+        triggerWin();
+    } else {
+        fillNextRow(foundLetters);
     }
 }
 
 // Function to write found letters in next row
-function fillNextRow(displayWord) {
+function fillNextRow(foundLetters) {
     for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
-        if (displayWord[indexLetter-1] != "-") {
-            var rowToDisplayNext = "L" + (playerTryNumber + 1);
-            document.getElementById(rowToDisplayNext + indexLetter).innerText = displayWord[indexLetter - 1];
+        if (foundLetters[indexLetter-1] != "-") {
+            var rowToDisplayNext = "L" + (numberOfTry + 1);
+            document.getElementById(rowToDisplayNext + indexLetter).innerText = foundLetters[indexLetter - 1];
         }
     }
 }
 
 // Stop current game and offer to restart
 function gameEnd() {
-    gameWord = undefined;
-    playerTryNumber = undefined;
-    displayWord = "------"
+    wordToFind = undefined;
+    numberOfTry = undefined;
+    foundLetters = "------"
     document.getElementById("restartButton").classList.remove("hidden");
     document.getElementById("inputButton").classList.add("hidden");
     document.getElementById("wordInput").classList.remove("wordInput");
     document.getElementById("wordInput").classList.add("hidden");
 }
 
+//
+// CTA and events listening
+//
 
 // Start game button and its interactions, showing grid and play components, hiding start game button
 document
@@ -145,7 +161,6 @@ document
     .addEventListener("click", function() {
         startGame();
 });
-
 
 // Triggers all the necessary functions to try a word by clicking the button
 document
@@ -172,15 +187,13 @@ document
     }
 });
 
-
 // Allows to restart the game by reloading the page
 document
     .getElementById("restartButton")
     .addEventListener("click", function() {
         location.reload();
         startGame();
-    });
-
+});
 
 // A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
 // Next steps : 

@@ -29,26 +29,26 @@ header {
 }
 
 .titre {
-    font-size: 5em;
-    font-weight: bold;
-    color: white;
-    font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-bottom: solid;
-    width: 50%;
-    border-color: aliceblue;
     display: flex;
     justify-content: center;
+    width: 50%;
     margin-bottom: 0.5em;
+    color: white;
+    font-size: 5em;
+    font-weight: bold;
+    font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: solid;
+    border-color: aliceblue;
 }
 
 .navbar {
     display: flex;
-    width: fit-content;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
     height: fit-content;
     margin:20px;
-    align-content: center;
 }
 
 .navbar > li {
@@ -56,10 +56,10 @@ header {
     padding-inline: 0.8em;
     font-family: '3dumbregular','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2em;
-    height: fit-content;
     border: 0.1em white;
     border-style: double;
     border-radius: 12px;
+    height: fit-content;
     padding-top: 3px;
     padding-bottom: 3px;
     margin: 15px;
