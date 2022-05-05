@@ -29,7 +29,7 @@
 
 
 #word {
-  width: 9em;
+  width: 12em;
   height: 75px;
   background-color: rgb(227, 233, 240);
   justify-content: center;
@@ -40,7 +40,7 @@
   align-self: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  letter-spacing: 20px;
+  letter-spacing: 12px;
 }
 
 #word::placeholder {
