@@ -197,7 +197,7 @@ document
 
 // A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
 // Next steps : 
-// Clean le code
+// Clean le code - DONE
 // Ajouter la gestion de mots de longueur N
 // Animations et design
 // Connexion API pour le dico
