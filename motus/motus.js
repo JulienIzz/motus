@@ -1,10 +1,10 @@
-const dicoRaw = ["julien","pardon","banane","patate"];
+const dicoRaw = ["julien","pardon","banane","patate","anticonstitutionnellement"];
 const dico = dicoRaw.map(element => {return element.toUpperCase();});
 const maxNumberOfTry = 5;
 var input;
 var wordToFind;
 var numberOfTry;
-var foundLetters = "------";
+var foundLetters = "";
 
 'use strict';
 
@@ -27,11 +27,28 @@ function generateWord() {
     return dico[getRandomInt(dico.length)];
 }
 
+function initializeLength(wordToFind) {
+    for (let rowNumber = 1 ; rowNumber <= maxNumberOfTry ; rowNumber++) {
+        var rowToComplete = "L" + rowNumber;
+        for (let boxNumber = 1 ; boxNumber <= wordToFind.length; boxNumber++) {
+            boxToCreate = rowToComplete + boxNumber;
+            var child = document.createElement("div");
+            child.id = boxToCreate;
+            document.getElementById(rowToComplete).appendChild(child);
+            document.getElementById("word").setAttribute("maxlength",wordToFind.length);
+        }
+    }
+    for (let index = 0 ; index < wordToFind.length ; index++) { // Adust the size of the found letters string
+        foundLetters += ("-");
+    }
+}
+
 // Generates a word for the game and sets the count of try to 0 
 // also showing grid and play components, hiding start game button
 function startGame() {
     numberOfTry = 0;
     wordToFind = generateWord();
+    initializeLength(wordToFind);
     document.getElementById("startButton").classList.add("hidden");
     document.getElementById("tableau").classList.remove("hidden");
     document.getElementById("wordInput").classList.remove("hidden");
@@ -41,6 +58,7 @@ function startGame() {
     document.getElementById("numberOfTryDiv").classList.add("numberOfTryDiv");
     document.getElementById("word").focus();
     document.getElementById("word").select();
+    document.getElementById("word").style.width = document.getElementById("tableau").offsetWidth + "px"; // Set the width of the textinput to match the size of the word
 }
 
 // Verifies the length of the word tried and go on if it's 6 letters long
@@ -72,7 +90,7 @@ function verifyWord(wordToVerify) {
 
 function winByInput() {
     var rowToDisplay = "L" + numberOfTry;
-    for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+    for (let indexLetter = 1; indexLetter <= wordToFind.length; indexLetter++) {
         var boxToDisplay = rowToDisplay + indexLetter; // Create the index for the box corresponding in HTML
         document.getElementById(boxToDisplay).classList.add("ok");
         document.getElementById(boxToDisplay).innerText = wordToFind[indexLetter - 1];
@@ -96,7 +114,7 @@ function displayHintWord (wordToVerify) {
 
 // Function dedicated to filling the boxes with the letters and colors
 function fillBoxes(wordToVerify, rowToDisplay) {
-    for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+    for (let indexLetter = 1; indexLetter <= wordToFind.length; indexLetter++) {
         var boxToDisplay = rowToDisplay + indexLetter; // Create the index for the box corresponding in HTML
         if (wordToVerify[indexLetter - 1] === wordToFind[indexLetter - 1]) {
             document.getElementById(boxToDisplay).classList.add("ok");
@@ -121,7 +139,7 @@ function checkFoundLetters() {
     if (foundLetters === wordToFind) {
         fillNextRow(foundLetters);
         var rowToDisplayNext = "L" + (numberOfTry + 1);
-        for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+        for (let indexLetter = 1; indexLetter <= wordToFind.length; indexLetter++) {
             document.getElementById(rowToDisplayNext + indexLetter).classList.add("ok"); // Fills the row in red for the win
         }
         triggerWin();
@@ -132,7 +150,7 @@ function checkFoundLetters() {
 
 // Function to write found letters in next row
 function fillNextRow(foundLetters) {
-    for (let indexLetter = 1; indexLetter < 7; indexLetter++) {
+    for (let indexLetter = 1; indexLetter <= wordToFind.length; indexLetter++) {
         if (foundLetters[indexLetter-1] != "-") {
             var rowToDisplayNext = "L" + (numberOfTry + 1);
             document.getElementById(rowToDisplayNext + indexLetter).innerText = foundLetters[indexLetter - 1];
@@ -144,7 +162,7 @@ function fillNextRow(foundLetters) {
 function gameEnd() {
     wordToFind = undefined;
     numberOfTry = undefined;
-    foundLetters = "------"
+    foundLetters = ""
     document.getElementById("restartButton").classList.remove("hidden");
     document.getElementById("inputButton").classList.add("hidden");
     document.getElementById("wordInput").classList.remove("wordInput");
@@ -198,10 +216,11 @@ document
 // A l'avenir on peut penser rajouter du son quand on gagne, un ptit gif, etc.
 // Next steps : 
 // Clean le code - DONE
-// Ajouter la gestion de mots de longueur N
+// Ajouter la gestion de mots de longueur N - DONE
 // Animations et design
-// Connexion API pour le dico
+// Connexion API pour le dico ?
 // Implanter la vérif de dictionnaire à l'input
 
+// Améliorations tech :
 // Mes boutons ont changé de style ???
 // Regrouper certains trucs avec getElementsByClassName
