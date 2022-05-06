@@ -3,6 +3,9 @@
 <head>
   <link rel="stylesheet" href="motus.css">
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="button.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +15,19 @@
 <body id="body">
   <header>
     <div class="titre">
-      <a href="home.html">MOTUS</a>
+      <a href="home.html" id="motus"><img src="img/MOTUS.png"></a>
     </div>
     <nav>
       <ul class="navbar">
-        <li><a href="motus.html">JEU</a></li>
-        <li><a href="rules.html">RÈGLES</a></li>
-        <li><a href="credits.html">CRÉDITS</a></li>
+        <li><a href="motus.html"><button class="buttonWave">JEU</button></a></li>
+        <li><a href="rules.html"><button class="buttonWave">REGLES</button></a></li>
+        <li><a href="credits.html"><button class="buttonWave">CREDITS</button></a></li>
       </ul>
     </nav>
   </header>
 
   <div id="startButton">
-    <button class="buttonSite" id="startGameButton">Start game</button>
+    <button class="buttonWave buttonSite scaleDown" id="startGameButton">Start game</button>
   </div>
 
   <div id="numberOfTryDiv" class="hidden">
@@ -54,11 +57,11 @@
   </div>
 
   <div id="inputButton" class="hidden">
-    <button class="buttonSite" id="tryWordButton">Try your word</button>
+    <button class="buttonWave buttonSite scaleDown" id="tryWordButton">Try your word</button>
   </div>
 
   <div id="restartButton" class="hidden">
-    <button class="buttonSite" id="restartGameButton">Restart a game</button>
+    <button class="buttonWave buttonSite scaleDown" id="restartGameButton">Restart a game</button>
   </div>
   
 </body>

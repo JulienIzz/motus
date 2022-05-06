@@ -14,12 +14,16 @@
 }
 
 body {
-    background-color: grey;
+    background-color: #3e025a;
     margin: 0;
 }
 
 header {
     background-color: #585858;
+    background-image: url("img/back-header.jpg");
+    background-size: 2650px;
+    background-position-y: -830px;
+    background-position-x: center;
 }
 
 header {
@@ -31,17 +35,19 @@ header {
 .titre {
     display: flex;
     justify-content: center;
-    width: 50%;
-    margin-bottom: 0.5em;
-    color: white;
-    font-size: 5em;
-    font-weight: bold;
-    font-family: '3dumbregular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-bottom: solid;
-    border-color: aliceblue;
+    margin-bottom: 25px;
 }
 
-.navbar {
+#motus {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+}
+
+/* .navbar {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,9 +55,9 @@ header {
     width: fit-content;
     height: fit-content;
     margin:20px;
-}
+} */
 
-.navbar > li {
+/* .navbar > li {
     display: inline;
     padding-inline: 0.8em;
     font-family: '3dumbregular','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,18 +70,14 @@ header {
     padding-bottom: 3px;
     margin: 15px;
 
-}
+} */
 
-.navbar > li:hover {
+/* .navbar > li:hover {
     font-weight: bolder;
     box-shadow: 3px 3px 3px white;
-}
+} */
 
-a {
+/* a {
     color: white;
     text-decoration: none;
-}
-
-ul {
-    padding: 0;
-}
+} */
