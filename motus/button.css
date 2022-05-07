@@ -6,6 +6,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .buttonWave {
@@ -111,8 +112,14 @@ ul {
   margin:auto;
   margin-top: 30px;
   margin-bottom: 50px;
+  min-width: 250px;
 }
 
 button {
   cursor: pointer;
+}
+
+.startButton {
+  display: flex;
+  justify-content: center;
 }
