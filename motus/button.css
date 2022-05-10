@@ -101,10 +101,6 @@ ul {
   }
 }
 
-.scaleDown {
-  transform: scale(0.6);
-}
-
 .buttonSite {
   display: flex;
   justify-content: center;
