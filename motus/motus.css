@@ -26,27 +26,6 @@
   margin: -4px;
 }
 
-
-
-#word {
-  width: 12em;
-  height: 75px;
-  background-color: rgb(227, 233, 240);
-  justify-content: center;
-  resize: none;
-  font-size: 3em;
-  text-transform: uppercase;
-  align-items: center;
-  align-self: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  letter-spacing: 12px;
-}
-
-#word::placeholder {
-  color: rgba(240, 248, 255, 0.733);
-}
-
 .ok {
   background-color: rgb(255, 0, 0);
 }
@@ -63,11 +42,6 @@
 
 .hidden {
   display: none;
-}
-
-.wordInput {
-  display: flex;
-  justify-content: center;
 }
 
 .numberOfTryDiv {
