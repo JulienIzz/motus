@@ -32,17 +32,20 @@ header {
     flex-direction: column;
 }
 
-.titre {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
 #motus {
-    color: white;
-    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+    margin: 20px;
 }
 
 ul {
     padding: 0;
+}
+
+#imgHeader {
+    width: 600px;
+}
+
+.scaleDown6 {
+    transform: scale(0.6);
 }

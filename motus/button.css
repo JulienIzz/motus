@@ -101,17 +101,13 @@ ul {
   }
 }
 
-.scaleDown {
-  transform: scale(0.6);
-}
-
 .buttonSite {
   display: flex;
   justify-content: center;
   align-items: center;
   margin:auto;
   margin-top: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   min-width: 250px;
 }
 
